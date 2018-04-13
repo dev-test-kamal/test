@@ -12,6 +12,7 @@ var con = mysql.createConnection({
 	database: "sql12231955",
 	port:3306
 });
+var port = process.env.PORT || 1337;
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.31:1000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -26,3 +27,8 @@ app.post('/homePage', function(req, res) {
 		res.end(JSON.stringify(homeResult));
 	});
 });
+
+
+app.listen(port);
+
+console.log("Server running at http://localhost:%d", port);
